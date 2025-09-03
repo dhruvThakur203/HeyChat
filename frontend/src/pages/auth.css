@@ -1,0 +1,209 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+/* Add styles for the root div and body */
+#root {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative elements */
+#root::before,
+#root::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+#root::before {
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>');
+    animation: float 6s ease-in-out infinite;
+}
+
+#root::after {
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%) scaleX(-1);
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>');
+    animation: float 6s ease-in-out infinite reverse;
+}
+
+/* Floating animation */
+@keyframes float {
+    0% {
+        transform: translateY(-50%) translateX(0);
+    }
+    50% {
+        transform: translateY(-50%) translateX(-20px);
+    }
+    100% {
+        transform: translateY(-50%) translateX(0);
+    }
+}
+
+/* Background pattern */
+.pattern {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-image: radial-gradient(#ffffff20 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+/* Auth container */
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 1.2rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    animation: fadeIn 0.7s ease-in-out;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+}
+
+/* Decorative circles */
+.auth-container::before,
+.auth-container::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.auth-container::before {
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(#4e54c8, transparent);
+    top: -75px;
+    right: -75px;
+    opacity: 0.2;
+}
+
+.auth-container::after {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(#8f94fb, transparent);
+    bottom: -50px;
+    left: -50px;
+    opacity: 0.2;
+}
+
+/* Heading */
+.auth-container h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* Input fields */
+.auth-container input {
+    width: 100%;
+    /* Changed from 10% to 100% */
+    padding: 0.9rem;
+    margin: 0.6rem 0;
+    /* Changed from auto to 0 */
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    /* Fixed border-radius value */
+    outline: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.auth-container input:focus {
+    border-color: #4e54c8;
+    box-shadow: 0 0 6px rgba(78, 84, 200, 0.4);
+}
+
+/* Form groups */
+.form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+/* Button */
+.auth-container button {
+    width: 100%;
+    /* Changed from 50% to 100% for consistency */
+    padding: 0.9rem;
+    margin: 1rem 0;
+    /* Changed from auto to 0 */
+    background: #4e54c8;
+    color: #fff;
+    border: none;
+    border-radius: 0.7rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auth-container button:hover {
+    background: #3c41a1;
+    transform: scale(1.02);
+}
+
+/* Small text (links, etc.) */
+.auth-container p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.auth-container a {
+    color: #4e54c8;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-container a:hover {
+    text-decoration: underline;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
