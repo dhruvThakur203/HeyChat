@@ -1,19 +1,11 @@
 const mongoose = require('mongoose');
 
 const connectDb = async () => {
-  const mongoUri = process.env.MONGO_URI;
-  if (!mongoUri) {
-    console.error('Missing MONGO_URI in environment.');
-    return;
-  }
   try {
-    await mongoose.connect(mongoUri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log('MongoDB connected');
+    const conn = await mongoose.connect(process.env.MONGO_URI);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
-    console.error('MongoDB connection error', error);
+    console.error(`Error: ${error.message}`);
     process.exit(1);
   }
 };
